@@ -1,7 +1,5 @@
-import { Box, Input, InputGroup, InputRightElement, Button, Text, Center } from '@chakra-ui/react'
-import { FcGoogle } from 'react-icons/fc';
-import { useSession, signIn, signOut } from "next-auth/react"
-import { use, useState } from 'react'
+import { Box, Button, Text } from '@chakra-ui/react'
+import { useState } from 'react'
 import Login from './Login';
 import GoogleLogin from './GoogleLogin';
 import Register from './Register';
@@ -16,17 +14,28 @@ const InitForm = () => {
     const [showSignUp, setShowSignUp] = useState(false)
     const handleShowSignUp = () => setShowSignUp(!showSignUp)
 
+    const resetState = () => {
+        setShowLogin(false)
+        setShowSignUp(false)
+    }
+
     let content
-    if(showLogin && !showSignUp) {
+    if(showLogin) {
         content = (
             <div>
-                <Login handleShowSignUp={handleShowSignUp} />
+                <Login/>
+                <Text onClick={resetState}>
+                    <button>back</button>
+                </Text>
             </div>
         )
-    } else if (showSignUp && !showLogin) {
+    } else if (showSignUp) {
         content = (
             <div>
                 <Register/>
+                <Text onClick={resetState}>
+                    <button>back</button>
+                </Text>
             </div>
         )
     } else {
@@ -45,10 +54,7 @@ const InitForm = () => {
         <>
             <Box h='auto' w='100%' p={5} color='black' border='1px' borderRadius='10px' textAlign='center'>
                 <Text fontSize='lg'marginBottom='10px'>Discover & read more</Text>
-                {
-                  content
-                }
-              
+                { content }
             </Box>
         </>
     )

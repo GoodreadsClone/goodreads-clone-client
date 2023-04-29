@@ -6,7 +6,7 @@ const GoogleLogin = () => {
         <Button
             w='80%'
             variant={'outline'}
-            marginBottom='10px'
+            margin='10px'
             leftIcon={<FcGoogle />}>
             <Text>Continue with Google</Text>
         </Button>

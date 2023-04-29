@@ -1,10 +1,7 @@
-import { Box, Input, InputGroup, InputRightElement, Button, Text, Center } from '@chakra-ui/react'
-import { useSession, signIn, signOut } from "next-auth/react"
-import { useState } from 'react'
+import { Input, Button } from '@chakra-ui/react'
 import GoogleLogin from './GoogleLogin'
 
 const Register = () => {
-
     return(
         <>
             <Input placeholder='Email' marginBottom='10px'></Input>
