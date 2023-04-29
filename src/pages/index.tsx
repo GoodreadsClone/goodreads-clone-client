@@ -1,6 +1,7 @@
 import NextHead from '@/components/NextHead'
 import { Button, Container, Box, Heading, SimpleGrid, Text } from '@chakra-ui/react'
 import { useSession, signIn, signOut } from "next-auth/react"
+import InitForm from '@/components/InitForm'
 
 export default function Home() {
   const { data: session } = useSession()
@@ -8,7 +9,7 @@ export default function Home() {
     <>
       <NextHead/>
       <main>
-        <Container minWidth='100%' height='100px' bg='yellow.50' centerContent>
+        <Container minWidth='100%' height='100px' bg='rgb(243, 240, 230)' centerContent>
           <Box padding='6' color='black' width='container.md' textAlign='left'>
             <Heading>goodreads</Heading>
           </Box>
@@ -17,18 +18,7 @@ export default function Home() {
         <Container minWidth='80%' padding='6'>
           <SimpleGrid minChildWidth='220px' spacing='40px'>
             <Box>
-              {
-                session ?
-                ( <>
-                  Signed in as {session?.user?.email} <br />
-                  <button onClick={() => signOut()}>Sign out</button>
-                </>)
-                :
-                (<>
-                  Not signed in <br />
-                  <button onClick={() => signIn()}>Sign in</button>
-                </>)
-              }
+              <InitForm/>
             </Box>
             <Box>
               <Text fontSize='lg'>Deciding what to read next?</Text>
